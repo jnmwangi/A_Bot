@@ -1,15 +1,24 @@
 async function highlightAtRisk() {
     const table = document.querySelector("table");
+    
     if (!table) {
-        setTimeout(highlightAtRisk, 1000);
+        setTimeout(highlightAtRisk, 100);
         return;
     }
+
+    let {configs} = await browser.storage.local.get("configs");
+    if(!configs){
+        configs = {canvas_hours: 4}
+        browser.storage.local.set({configs})
+    }
+
+    console.log(configs)
 
     const course = await courseInfo();
     const courseStartDate = new Date(course.start_at);
     const now = new Date();
     let expectedTime = now.getTime() - courseStartDate.getTime();
-    const expectedTimeOnCanvasPerDay = 4 * 60 * 60 * 1000;
+    const expectedTimeOnCanvasPerDay = configs.canvas_hours * 60 * 60 * 1000;
     // Remove the weekends time by getting the weeks the course takes minus hoursExpectedPerDay * 2days * weeks
     const weeks = Math.floor(expectedTime / (7 * expectedTimeOnCanvasPerDay))
     expectedTime -= expectedTimeOnCanvasPerDay * 2 * weeks;
@@ -48,4 +57,5 @@ async function courseInfo() {
     return null;
 }
 
+//initialize
 highlightAtRisk();

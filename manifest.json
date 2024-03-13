@@ -13,7 +13,8 @@
     "permissions": [
       "tabs",
       "activeTab",
-      "scripting"
+      "scripting",
+      "storage"
     ],
     "content_scripts": [
       {
@@ -22,7 +23,7 @@
       },
       {
         "matches": ["https://moringa.instructure.com/courses/602/users"],
-        "js": ["/scripts/at-risk.js"]
+        "js": ["/scripts/browser-polyfill.min.js", "/scripts/at-risk.js"]
       }
     ]
   }
