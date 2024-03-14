@@ -1,6 +1,6 @@
 async function highlightAtRisk() {
     const table = document.querySelector("table");
-    
+
     if (!table) {
         setTimeout(highlightAtRisk, 100);
         return;
@@ -11,8 +11,6 @@ async function highlightAtRisk() {
         configs = {canvas_hours: 4}
         browser.storage.local.set({configs})
     }
-
-    console.log(configs)
 
     const course = await courseInfo();
     const courseStartDate = new Date(course.start_at);

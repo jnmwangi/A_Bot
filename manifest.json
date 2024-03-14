@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "A Bot",
-    "version": "1.4",
+    "version": "1.3",
     "description": "Marks attendance on Canvas LMS",
     "icons": {
       "48": "/assets/icon.png"
@@ -22,7 +22,7 @@
         "js": ["/scripts/jquery.js","/scripts/content_script.js"]
       },
       {
-        "matches": ["https://moringa.instructure.com/courses/602/users"],
+        "matches": ["https://moringa.instructure.com/courses/*/users"],
         "js": ["/scripts/browser-polyfill.min.js", "/scripts/at-risk.js"]
       }
     ]
