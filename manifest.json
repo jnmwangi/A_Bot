@@ -25,6 +25,11 @@
         "matches": ["https://moringa.instructure.com/courses/*/users"],
         "js": ["/scripts/browser-polyfill.min.js", "/scripts/at-risk.js"]
       }
-    ]
+    ],
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "{9a89f1f5-9c16-4a2f-8c29-f54cfe8edfd8}"
+      }
+    }
   }
   
